@@ -213,15 +213,15 @@ Search settings:
 
 Lap-time model per stint:
 
-\[
+$$
 T_n = T_0 + (n-1)d,\quad n=1,\dots,N
-\]
+$$
 
 Total stint time (sum of AP):
 
-\[
+$$
 \sum_{n=1}^{N} T_n = \frac{N}{2}\left(2T_0 + (N-1)d\right)
-\]
+$$
 
 This is implemented directly in `stint_time_ap`.
 
@@ -236,11 +236,11 @@ Given:
 
 Total race estimate:
 
-\[
+$$
 T_{\text{strategy}} =
 \sum_{i=1}^{m} \text{stint\_time\_ap}(T0_{c_i}, d_{c_i}, N_i)
  + (m-1)L_{\text{pit}}
-\]
+$$
 
 where `(m-1)` is number of stops.
 
@@ -252,9 +252,9 @@ This uses recursive backtracking to enumerate all valid ways to split `TOTAL_LAP
 
 Conceptually, it enumerates all constrained integer compositions:
 
-\[
+$$
 N_1 + N_2 + \dots + N_m = \text{TOTAL\_LAPS},\quad N_i \ge \text{MIN\_STINT\_LAPS}
-\]
+$$
 
 ---
 
@@ -295,7 +295,9 @@ If no candidate remains, the code raises an error.
 1. **Linear in-stint degradation:** lap time rises linearly with tyre age (`AP` model).
 2. **Constant per-compound parameters:** one `T0` and one `d` per compound for all drivers/stints.
 3. **Constant pit loss:** one median pit penalty used for all pit events.
-4. **No traffic/event dynamics:** no explicit safety car, VSC, traffic, undercut, overcut, or weather effects.
+4. **No traffic/event dynamics (default):** no explicit safety car, VSC, traffic, undercut, overcut, or weather effects.
+
+   Note: An optional helper module has been added (tyre_strategy_with_events.py) to perform a simple deterministic event-aware simulation. It can detect SC/VSC intervals from FastF1 session events where available and simulate strategies lap-by-lap with neutralised-lap multipliers and reduced pit loss when pitting under events. This helper is opt-in and must be imported and called from the notebook to enable event-aware evaluation.
 5. **Global race trend handled in Part A only:** fuel/track trend is removed for degradation estimation but not dynamically re-simulated per strategy.
 
 These assumptions make the model simple, interpretable, and fast for comparative strategy ranking.
