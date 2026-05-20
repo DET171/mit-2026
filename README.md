@@ -296,8 +296,6 @@ If no candidate remains, the code raises an error.
 2. **Constant per-compound parameters:** one `T0` and one `d` per compound for all drivers/stints.
 3. **Constant pit loss:** one median pit penalty used for all pit events.
 4. **No traffic/event dynamics (default):** no explicit safety car, VSC, traffic, undercut, overcut, or weather effects.
-
-   Note: An optional helper module has been added (tyre_strategy_with_events.py) to perform a simple deterministic event-aware simulation. It can detect SC/VSC intervals from FastF1 session events where available and simulate strategies lap-by-lap with neutralised-lap multipliers and reduced pit loss when pitting under events. This helper is opt-in and must be imported and called from the notebook to enable event-aware evaluation.
 5. **Global race trend handled in Part A only:** fuel/track trend is removed for degradation estimation but not dynamically re-simulated per strategy.
 
 These assumptions make the model simple, interpretable, and fast for comparative strategy ranking.
