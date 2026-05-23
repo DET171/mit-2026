@@ -42,7 +42,7 @@ This formula is used because it is faster and cleaner than summing every lap one
 The strategy comparison is built by substituting estimated values into formulas. For a full race strategy with several stints,
 
 $$
-T_{\text{strategy}} = \sum_{i=1}^{m} S_i + (m-1)L_{\text{pit}}
+{\mathcal{T}}_{\text{strategy}} = \sum_{i=1}^{m} S_i + (m-1)L_{\text{pit}}
 $$
 
 where:
