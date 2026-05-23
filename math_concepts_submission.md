@@ -8,7 +8,7 @@ This project models Formula 1 tyre strategy using a mixture of A-level mathemati
 
 The core lap-time model in the strategy section is an arithmetic progression.
 
-If a stint starts with lap time $T_0$ and the lap time increases by a constant amount $d$ each lap, then the $n$th lap of the stint is
+If a stint starts with lap time $T_0$ and the lap time increases by a constant amount $d$ each lap, then the $n^{\text{th}}$ lap of the stint is
 
 $$
 T_n = T_0 + (n-1)d
